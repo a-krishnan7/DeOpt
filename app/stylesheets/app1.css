@@ -59,6 +59,17 @@ h1 {
   line-height: 1.7em;
   margin-bottom: 10px;
   text-align: center;
+  margin-left: 3%;
+}
+
+h2 {
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+  font-size: 1.5em;
+  line-height: 1.0em;
+  margin-bottom: 5px;
+  text-align: center;
+  margin-left: 3%;
 }
 
 /* Full-width input fields */
@@ -99,6 +110,11 @@ button {
   color: #FFC300;
 }
 
+#buttonShow {
+  width: 30%;
+  margin-left: 2%;
+}
+
 #buttonCancel {
   text-align: center;
   margin-left: 15%;
@@ -112,6 +128,27 @@ button {
 #buttonDiv {
   width: 100%;
   text-align: center;
+}
+
+#adder1 {
+  width: 50%;
+}
+
+#status {
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+  font-size: 2.0em;
+  margin-left: 3%;
+  margin-top: 2%;
+}
+
+#addStatus {
+  font-family: 'Helvetica', sans-serif;
+  font-weight: bold;
+  font-size: 2.0em;
+  margin-left: 3%;
+  margin-top: 2%;
+  color: #FFC300;
 }
 
 /* Extra styles for the cancel button */
@@ -143,7 +180,6 @@ button {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    margin: 5% auto 15% auto;
 }
 
 /* Modal Content/Box */
@@ -202,6 +238,7 @@ button {
 #myBodyStuff {
   margin-left: 5%;
   margin-right: 5%;
+  width: 70%;
 }
 
 /* Change the color of links on hover */
@@ -242,6 +279,10 @@ button {
   margin-bottom: 15px;
 }
 
+#myTD {
+  font-size: 2.5em;
+  border: 1px solid #888;
+}
 
 #orderTable thead {
   cursor: pointer;
@@ -253,6 +294,7 @@ button {
   padding: 12px 30px;
   padding-left: 42px;
   background-color: #FFC300;
+  border: 1px solid #888;
 }
 #orderTable thead tr th span { 
   padding-right: 20px;
@@ -279,8 +321,10 @@ button {
   text-align: center;
   padding: 15px 10px;
 }
+
 #orderTable tbody tr td.lalign {
   text-align: left;
+  font-size: 3.0em;
 }
 #putOrders {
   text-align: center;
@@ -378,4 +422,3 @@ button {
 #callOrders tbody tr td.lalign {
   text-align: left;
 }
-

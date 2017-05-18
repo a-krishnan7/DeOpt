@@ -93,14 +93,12 @@
 		event Matchfail(address user, bytes32 orderhash);
 		event MatchfailFunds(address user, string message);
 
-
 		function Master(){
 			admin = msg.sender; //So far the admin has no special powers....
 			MasterContractAddress = this;
-
 		}
 
-		function getMasterAddress() returns (address) {
+		function getMasterAddress() public returns (address) {
 			return this;
 		}
 

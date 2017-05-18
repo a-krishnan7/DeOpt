@@ -58,7 +58,93 @@ window.App = {
     status.innerHTML = message;
   },
 
-  orderContract: function() {
+  setAddStatus: function(message) {
+    var addStatus = document.getElementById("addStatus");
+    addStatus.innerHTML = message;
+  },
+
+  showAddress: function() {
+    var self = this;
+    var option;
+
+    self.setAddStatus("Finding address... (please wait)");
+
+    Master.deployed().then(function(instance) {
+      console.log(Master.deployed());
+      option = Master.deployed();
+      return option.MasterContractAddress;
+    }).then(function(address) {
+      self.setAddStatus("Found address " + "0x1f20f80efacb32ffcdc48d9f9329e1c914ef1473");
+    }).catch(function(e) {
+      console.log(e);
+      self.setAddStatus("Error finding.");
+    }); 
+  },
+
+   orderContract2: function() {
+    var self = this;
+    var option;
+    var calladdr;
+    var putaddr;
+
+    var BilAddress = "0x3c13f0957168aad739fe14fa659bbe8777ff7148";
+    var address = [BilAddress, calladdr, putaddr];
+    var callhash = BilAddress;
+    var puthash = BilAddress;
+    var expr = 1496188800;
+    var upper = 105;
+    var lower = 95;
+
+    var prices = [upper, lower, 105, 95, 10];
+
+    Master.defaults({
+      from: account,
+      gas: 1000000,
+      gasPrice: 100,
+      value: 0
+    });
+    self.setStatus("Initializing order.");
+
+    Master.deployed().then(function(instance) {
+      option = instance;
+      return option.AddAgreement(address, callhash, puthash, expr, prices, "AAPL", {from: account});
+    }).then(function() {
+      self.setStatus("Order complete!");
+    }).catch(function(e) {
+      console.log(e);
+      self.setStatus("Error completing order.");
+    }); 
+  },
+
+   setTrueStatus: function(message) {
+    var trueStatus = document.getElementById("trueStatus");
+    trueStatus.innerHTML = message;
+  },
+
+   addFunds2: function() {
+    var self = this;
+    var option;
+
+    Master.defaults({
+      from: account,
+      gas: 1000000,
+      gasPrice: 100,
+      value: 0
+    });
+
+    Master.deployed().then(function(instance) {
+      option = instance;
+      console.log(option.getMasterAddress({from : account}));
+      return option.addFunds({from: account});
+    }).then(function() {
+      //self.setTrueStatus("Funds added.");
+    }).catch(function(e) {
+      console.log(e);
+      //self.setTrueStatus("Funds could not be added.");
+    }); 
+   },
+
+    orderContract: function() {
     var self = this;
 
     var upper;
@@ -79,7 +165,7 @@ window.App = {
 
     var prices = [upper, lower, 105, 95, 10];
 
-    this.setStatus("Initiating order... (please wait)");
+    //this.setStatus("Initiating order... (please wait)");
     var table;
     if (opt == "Type: Put") {
       table = document.getElementById("putOrders");
@@ -97,7 +183,7 @@ window.App = {
     cell4.innerHTML = quantity;
     row.onclick = function() { row.remove();self.setStatus("Order matched!")};
 
-    var option;
+    /*var option;
 
     Master.defaults({
       from: account,
@@ -108,13 +194,13 @@ window.App = {
 
     Master.deployed().then(function(instance) {
       option = instance;
-      return option.AddAgreement(address, callhash, puthash, expr, prices, sym, {from: account});
+      return option.AddAgreement(address, callhash, puthash, 149366000, prices, "AAPL", {from: account});
     }).then(function() {
       self.setStatus("Order complete!");
     }).catch(function(e) {
       console.log(e);
-      self.setStatus("Order complete!");
-    }); 
+      self.setStatus("Error completing order.");
+    }); */
   },
 };
 
