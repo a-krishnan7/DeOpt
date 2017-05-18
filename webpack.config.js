@@ -14,6 +14,9 @@ module.exports = {
     ]),
     new CopyWebpackPlugin([
       { from: 'app/index2.html', to: "index2.html"}
+    ]),
+    new CopyWebpackPlugin([
+      { from: 'app/index3.html', to: "index3.html"}
     ])
   ],
   module: {
